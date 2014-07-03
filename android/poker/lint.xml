@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="MergeRootFrame">
+        <ignore path="res/layout/activity_offer.xml" />
+        <ignore path="res/layout/activity_sale.xml" />
+    </issue>
+    <issue id="UselessParent">
+        <ignore path="res/layout/add_sale_icon_badge.xml" />
+    </issue>
+</lint>

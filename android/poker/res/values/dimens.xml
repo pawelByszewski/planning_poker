@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="offer_row_component_image_margin_left">8dp</dimen>
+    <dimen name="offer_row_component_image_margin_right">8dp</dimen>
+    <dimen name="offer_cell_margin">4dp</dimen>
+    <dimen name="offer_cell_padding">8dp</dimen>
+    <dimen name="tab_font_size">12sp</dimen>
+    <dimen name="tab_side_padding">2dp</dimen>
+
+    <integer name="not_transparent">1</integer>
+    <integer name="full_transparent">0</integer>
+    <item name="scale_max" format="float" type="dimen">1.0</item>
+
+    <dimen name="sort_dialog_padding">8dp</dimen>
+
+</resources>
