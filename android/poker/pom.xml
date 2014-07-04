@@ -109,20 +109,12 @@
                 <groupId>com.jayway.maven.plugins.android.generation2</groupId>
                 <artifactId>android-maven-plugin</artifactId>
                 <configuration>
+                    <sdk>
+                        <platform>19</platform>
+                    </sdk>
                     <proguard>
                         <config>proguard/proguard.cfg</config>
                     </proguard>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>2.11</version>
-                <configuration>
-                    <failsOnError>true</failsOnError>
-                    <configLocation>../checkstyle.xml</configLocation>
-                    <consoleOutput>true</consoleOutput>
-                    <excludes>**/Ln.java, **/Strings.java, **/SafeAsyncTask.java</excludes>
                 </configuration>
             </plugin>
             <plugin>
