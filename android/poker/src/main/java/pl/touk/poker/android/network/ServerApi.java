@@ -13,6 +13,6 @@ public interface ServerApi {
 
     @POST("/grooming/{id}/estimate")
 //    void estimate(@Body EstimateRequest request, @Path("id") String id, Callback<EmptyResponse> callback);
-    void estimate(@Query("userId") String userId,@Query("estimate") String estimate, @Path("id") String id, Callback<EmptyResponse> callback);
+    void estimate(@Query("userId") String userId, @Query("estimate") String estimate, @Path("id") String id, Callback<EmptyResponse> callback);
 
 }

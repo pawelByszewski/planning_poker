@@ -72,7 +72,7 @@ public class ComponentsActivity extends Activity {
         public void success(Response response, retrofit.client.Response response2) {
             Intent intent = new Intent(ComponentsActivity.this, PlanningActivity.class);
             intent.putExtra("userId", response.getUserId());
-            intent.putExtra("sessionId", response.getSessionId());
+            intent.putExtra("sessionId", sessionInput.getText().toString());
             startActivity(intent);
         }
 
