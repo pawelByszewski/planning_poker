@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 import pl.touk.poker.android.R;
 import pl.touk.poker.android.config.dagger.Injector;
 import pl.touk.poker.android.network.Request;
@@ -42,6 +43,27 @@ public class ComponentsActivity extends Activity {
         Request request = new Request();
         request.setName(usernameInput.getText().toString());
         client.getApi().joinSession(request, sessionInput.getText().toString(), new SessionJoined());
+    }
+
+    @OnClick(R.id.scan)
+    public void scan() {
+        Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+        intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+        startActivityForResult(intent, 0);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+                String contents = intent.getStringExtra("SCAN_RESULT");
+//                String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
+                Toast.makeText(ComponentsActivity.this, "session set to " + contents, Toast.LENGTH_LONG).show();
+                sessionInput.getText().clear();
+                sessionInput.getText().append(contents);
+            } else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(ComponentsActivity.this, "unusable code", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     private class SessionJoined implements Callback<Response> {
