@@ -29,6 +29,12 @@
                     $('#estimate').append('<p>' + message.body + '</p>')
                 });
             });
+            var qrcode = new QRCode("qrcode");
+            function makeCode () {
+                qrcode.makeCode("${planningSessionKey}");
+            }
+            makeCode();
+
         });
 
         $(document).ready(function(){
@@ -64,7 +70,8 @@
             </button>
         </a>
     </div>
-<script type="text/javascript">
+
+    <div id="qrcode"></div>
 
 </script>
 </body>
