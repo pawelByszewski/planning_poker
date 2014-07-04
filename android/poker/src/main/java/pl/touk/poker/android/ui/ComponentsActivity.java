@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
+import com.google.zxing.client.android.CaptureActivity;
 import pl.touk.poker.android.R;
 import pl.touk.poker.android.config.dagger.Injector;
 import pl.touk.poker.android.network.Request;
@@ -38,10 +40,13 @@ public class ComponentsActivity extends Activity {
         Injector.inject(this);
     }
 
-    public void onJoinSession(View view) {
+    @OnClick(R.id.joinButton)
+    public void onJoinSession() {
         Request request = new Request();
         request.setName(usernameInput.getText().toString());
-        client.getApi().joinSession(request, sessionInput.getText().toString(), new SessionJoined());
+//        client.getApi().joinSession(request, sessionInput.getText().toString(), new SessionJoined());
+        Intent intent = new Intent(this, CaptureActivity.class);
+        startActivityForResult(intent, 123);
     }
 
     private class SessionJoined implements Callback<Response> {
@@ -58,5 +63,10 @@ public class ComponentsActivity extends Activity {
             Toast.makeText(ComponentsActivity.this, "Failed", Toast.LENGTH_LONG).show();
         }
     }
-
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (resultCode == 123) {
+            // handle scan result
+        }
+        // else continue with any other code you need in the method
+    }
 }

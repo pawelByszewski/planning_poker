@@ -16,6 +16,21 @@
     <name>Client</name>
 
     <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>com.google.zxing</groupId>-->
+            <!--<artifactId>core</artifactId>-->
+            <!--<version>3.1.0</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.google.zxing</groupId>-->
+            <!--<artifactId>android-integration</artifactId>-->
+            <!--<version>2.3.0</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>pl.touk.poker.android</groupId>
+            <artifactId>scanner</artifactId>
+            <version>2.3.0</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

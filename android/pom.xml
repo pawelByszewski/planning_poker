@@ -12,6 +12,7 @@
 
     <modules>
         <module>poker</module>
+        <module>scanner</module>
     </modules>
 
     <properties>
