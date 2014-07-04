@@ -21,14 +21,10 @@
             var client = Stomp.over(socket);
 
             client.connect({}, function() {
-                client.subscribe("/add/user", function(message) {
+                client.subscribe("/topic/adduser", function(message) {
                     $('#users').append('<p>' + message.body + '</p>')
                 });
             });
-
-//            $("#helloButton").click(function() {
-//                client.send("/app/hello", {}, "");
-//            });
         });
     </script>
 </head>
@@ -37,10 +33,6 @@
     <div class="row-fluid">
         <div class="span4">
             <h1>${planningSessionKey}</h1>
-        </div>
-
-        <div class="span4">
-            <qrcode:image height="100" width="100" text="${planningSessionKey}"/>
         </div>
     </div>
     <div class="row-fluid" >
