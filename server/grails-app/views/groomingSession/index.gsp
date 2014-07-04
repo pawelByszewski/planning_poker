@@ -30,6 +30,14 @@
                 });
             });
         });
+
+        $(document).ready(function(){
+            $('#newTask').click(function(e) {
+                e.preventDefault();
+                $.get( "poker/grooming/${planningSessionKey}/newTask");
+                $('#estimate').empty();
+            });
+        })
     </script>
 </head>
 
@@ -50,6 +58,14 @@
         <div class="span4" id="estimate">
 
         </div>
+        <a id="newTask" href="">
+            <button class="btn btn-success btn-lg" type="button">
+                Nowy Task
+            </button>
+        </a>
     </div>
+<script type="text/javascript">
+
+</script>
 </body>
 </html>

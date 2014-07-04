@@ -38,6 +38,15 @@ class GroomingSessionController {
         }
     }
 
+    def newTask() {
+        GroomingSession groommingSession = GroomingSession.findBySessionId(params.sessionId)
+        groommingSession.participants.each{
+            it.estimate = -1
+            it.save()
+        }
+        render [:]
+    }
+
     @MessageMapping("/adduser")
     @SendTo("/topic/adduser")
     def example() {
