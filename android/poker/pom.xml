@@ -110,7 +110,7 @@
                 <artifactId>android-maven-plugin</artifactId>
                 <configuration>
                     <sdk>
-                        <platform>19</platform>
+                        <platform>17</platform>
                     </sdk>
                     <proguard>
                         <config>proguard/proguard.cfg</config>
