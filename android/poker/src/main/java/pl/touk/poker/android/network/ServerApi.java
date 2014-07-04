@@ -10,4 +10,7 @@ public interface ServerApi {
     @POST("/grooming/{id}/join")
     void joinSession(@Body Request request, @Path("id") String id, Callback<Response> callback);
 
+    @POST("/grooming/{id}/estimate")
+    void estimate(@Body EstimateRequest request, @Path("id") String id, Callback<EmptyResponse> callback);
+
 }

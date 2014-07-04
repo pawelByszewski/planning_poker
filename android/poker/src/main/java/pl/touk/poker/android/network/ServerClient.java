@@ -28,14 +28,6 @@ public class ServerClient {
 
     private ServerApi grailsApi;
 
-   // private static class Loader {
-    //    static ServerClient instance = new ServerClient();
-    //}
-
-    //private static ServerClient getInstance() {
-    //    return Loader.instance;
-   // }
-
     public ServerClient() {
 
         OkHttpClient okHttpClient = new OkHttpClient();
@@ -62,9 +54,6 @@ public class ServerClient {
 
             @Override
             public Response execute(Request request) throws IOException {
-                // TODO: remove for production, this is debug printing
-                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                request.getBody().writeTo(outputStream);
                 Response response = null;
                 long start = System.nanoTime();
                 try {
