@@ -7,7 +7,7 @@
 
 	<body>
 		<div class="row-fluid">
-            <a href="PlanningSession">
+            <a href="GroomingSession">
             <button class="btn btn-success btn-lg" type="button">
                 Rozpocznij sesję
             </button>

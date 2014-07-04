@@ -9,6 +9,6 @@ class UrlMappings {
 
         "/"(view:"/index")
         "500"(view:'/error')
-        "/rest/grooming/$id/addUser/$name" (controller: "planningSession", action: "add")
+        "/rest/grooming/$id/addUser/$name" (controller: "groomingSession", action: "add")
 	}
 }
