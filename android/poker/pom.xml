@@ -32,14 +32,6 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.android.support</groupId>
-            <artifactId>support-v13</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.android.support</groupId>
-            <artifactId>support-v4</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.jakewharton</groupId>
             <artifactId>butterknife</artifactId>
         </dependency>
