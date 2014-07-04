@@ -11,7 +11,11 @@ class GroomingSessionController {
         [planningSessionKey: planningSessionKey]
     }
 
-    def add() {
-        render([id: params.id, name: params.name] as JSON)
+    def addUser() {
+        GroomingParticipant groomingParticipant = new GroomingParticipant(name: params.name)
+        GroommingSession groommingSession = GroommingSession.findBySessionId(params.sessionId)
+        groommingSession.addToParticipants(groomingParticipant)
+        groommingSession.save(true)
+        render([id: groomingParticipant.id] as JSON)
     }
 }

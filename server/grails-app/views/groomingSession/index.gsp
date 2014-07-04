@@ -6,9 +6,17 @@
 </head>
 
 <body>
-<div class="row-fluid">
-    <h1>${planningSessionKey}</h1>
-    <qrcode:image height="100" width="100" text="${planningSessionKey}"/>
-</div>
+    <div class="row-fluid">
+        <div class="span4">
+            <h1>${planningSessionKey}</h1>
+        </div>
+
+        <div class="span4">
+            <qrcode:image height="100" width="100" text="${planningSessionKey}"/>
+        </div>
+    </div>
+    <div class="row-fluid">
+        sdfasdf
+    </div>
 </body>
 </html>

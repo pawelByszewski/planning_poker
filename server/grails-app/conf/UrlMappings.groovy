@@ -7,8 +7,8 @@ class UrlMappings {
             }
         }
 
+        "/rest/grooming/$sessionId/join" (controller: "groomingSession", action: "addUser")
         "/"(view:"/index")
         "500"(view:'/error')
-        "/rest/grooming/$id/addUser/$name" (controller: "groomingSession", action: "add")
 	}
 }
