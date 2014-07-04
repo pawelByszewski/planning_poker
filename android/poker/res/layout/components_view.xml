@@ -3,35 +3,42 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Username"
-            android:layout_alignParentLeft="true"
-            android:id="@+id/usernameText"/>
-    <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="Username"
-            android:ems="10"
-            android:id="@+id/usernameInput"
-            android:layout_alignParentRight="true"
-            android:layout_alignRight="@+id/usernameText"
-            android:gravity="fill_horizontal"/>
 
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:text="SessionId"
-              android:layout_alignParentLeft="true"
-              android:id="@+id/sessionIdText"
-              android:layout_below="@+id/usernameInput"/>
-    <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/sessionIdInput"
-            android:hint="Session ID"
-            android:layout_below="@+id/usernameInput"
-            android:layout_alignParentRight="true"
-            android:layout_alignRight="@+id/sessionIdText"
-            android:gravity="fill_horizontal"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:id="@+id/nameID"
+            android:orientation="horizontal">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="Username"/>
+
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="Username"
+                android:ems="10"
+                android:id="@+id/usernameInput"
+                android:layout_weight="1"/>
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:gravity="center_vertical"
+                  android:id="@+id/sessionIDlayout"
+                  android:orientation="horizontal"
+                    android:layout_below="@+id/nameID">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="SessionId"
+                  android:layout_alignParentLeft="true"
+                  android:id="@+id/sessionIdText"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sessionIdInput"
+                android:hint="Session ID"
+                android:layout_weight="1"/>
+    </LinearLayout>
+
+
 
 
     <Button
@@ -39,7 +46,7 @@
             android:layout_height="wrap_content"
             android:text="Scan"
             android:id="@+id/scan" android:layout_gravity="center_horizontal"
-            android:layout_below="@+id/sessionIdInput"/>
+            android:layout_below="@+id/sessionIDlayout"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

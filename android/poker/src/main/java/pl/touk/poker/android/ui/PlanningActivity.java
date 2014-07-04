@@ -53,10 +53,11 @@ public class PlanningActivity extends Activity {
 
     @OnClick(R.id.sendButton)
     public void onSend(View view) {
-        EstimateRequest req = new EstimateRequest();
-        req.setUserId(userId);
-        req.setEstimate(estimateSpinner.getSelectedItem().toString());
-        client.getApi().estimate(req, sessionId, new ToastResponse());
+//        EstimateRequest req = new EstimateRequest();
+//        req.setUserId(userId);
+//        req.setEstimate(estimateSpinner.getSelectedItem().toString());
+//        client.getApi().estimate(req, sessionId, new ToastResponse());
+        client.getApi().estimate(userId, estimateSpinner.getSelectedItem().toString() , sessionId, new ToastResponse());
     }
 
     private void initCredentials() {
