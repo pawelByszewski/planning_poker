@@ -22,7 +22,7 @@ import javax.net.ssl.*;
 
 public class ServerClient {
 
-    private static final String API_URL = "http://http://poker1.apiary-mock.com";
+    private static final String API_URL = "http://poker1.apiary-mock.com";
     public static final int TIMEOUT = 120000;
     public static String APP_VERSION = "undefined";
 
