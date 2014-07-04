@@ -11,6 +11,7 @@ import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import com.google.zxing.integration.android.IntentIntegrator;
 import pl.touk.poker.android.R;
 import pl.touk.poker.android.config.dagger.Injector;
 import pl.touk.poker.android.network.Request;
@@ -48,13 +49,15 @@ public class ComponentsActivity extends Activity {
 
     @OnClick(R.id.scan)
     public void scan() {
-        Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-        intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
-        startActivityForResult(intent, 0);
+        IntentIntegrator intentIntegrator = new IntentIntegrator(this);
+        intentIntegrator.initiateScan();
+//        Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+//        intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+//        startActivityForResult(intent, 0);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (requestCode == 0) {
+        if (requestCode == 0 || requestCode == 49374) {
             if (resultCode == RESULT_OK) {
                 String contents = intent.getStringExtra("SCAN_RESULT");
 //                String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
