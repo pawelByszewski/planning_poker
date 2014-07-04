@@ -4,6 +4,7 @@ import dagger.Module;
 import dagger.Provides;
 import pl.touk.poker.android.config.PokerApplication;
 import pl.touk.poker.android.config.application.ApplicationRunConfiguration;
+import pl.touk.poker.android.network.ServerClient;
 import pl.touk.poker.android.ui.ComponentsActivity;
 import pl.touk.poker.android.ui.PlanningActivity;
 import pl.touk.poker.android.utils.Ln;
@@ -21,6 +22,7 @@ import pl.touk.poker.android.utils.TaskRunnerImpl;
             ApplicationRunConfiguration.class,
             RootModule.class,
             ComponentsActivity.class,
+            ServerClient.class,
             PlanningActivity.class
     },
     staticInjections = {
@@ -31,9 +33,17 @@ import pl.touk.poker.android.utils.TaskRunnerImpl;
 )
 public class RootModule {
 
+    private ServerClient serverClient;
+
     @Provides
     TaskRunner provideTaskRunner() {
         return new TaskRunnerImpl();
+    }
+
+    @Provides
+    ServerClient provideServerClient() {
+        if(serverClient == null) serverClient = new ServerClient();
+        return serverClient;
     }
 
 }
