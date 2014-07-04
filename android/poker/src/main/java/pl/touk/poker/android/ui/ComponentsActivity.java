@@ -40,9 +40,10 @@ public class ComponentsActivity extends Activity {
     }
 
     public void onJoinSession(View view) {
-        Request request = new Request();
-        request.setName(usernameInput.getText().toString());
-        client.getApi().joinSession(request, sessionInput.getText().toString(), new SessionJoined());
+//        Request request = new Request();
+//        request.setName(usernameInput.getText().toString());
+//        client.getApi().joinSession(request, sessionInput.getText().toString(), new SessionJoined());
+        client.getApi().joinSession(usernameInput.getText().toString(), sessionInput.getText().toString(), new SessionJoined());
     }
 
     @OnClick(R.id.scan)
