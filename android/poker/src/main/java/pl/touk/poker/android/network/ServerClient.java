@@ -17,15 +17,13 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
 import javax.net.ssl.*;
 
 public class ServerClient {
 
-    private static final String API_URL = "https://mobileapp.zenithbank.com/stratus-json2";
-    //        private static final String API_URL = "https://41.203.113.103/stratus-json";
-//                private static final String API_URL = "http://192.168.0.142:9090/stratus-json/";
+    private static final String API_URL = "http://http://poker1.apiary-mock.com";
     public static final int TIMEOUT = 120000;
-
     public static String APP_VERSION = "undefined";
 
     private static boolean IS_MOCK = true;
