@@ -1,10 +1,13 @@
 package poker
 import grails.converters.JSON
 import org.apache.commons.lang.RandomStringUtils
+import org.springframework.web.multipart.commons.CommonsMultipartFile
+import poker.task.reader.Task
 
 class GroomingSessionController {
 
     def brokerMessagingTemplate
+    def xmlTaskReaderService
 
     def index() {
         String planningSessionKey = RandomStringUtils.random(9, true, true)
@@ -45,4 +48,10 @@ class GroomingSessionController {
         render [:]
     }
 
+    def readTaskFile() {
+        CommonsMultipartFile xmlTaskFile = request.getFile('taskFile') as CommonsMultipartFile
+        List<Task> tasks = xmlTaskReaderService.readTasks(xmlTaskFile.inputStream)
+        render (view: 'taskTable', model: [tasks: tasks])
+    }
+    
 }
