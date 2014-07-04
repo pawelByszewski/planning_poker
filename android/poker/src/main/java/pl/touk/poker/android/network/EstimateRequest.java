@@ -2,22 +2,22 @@ package pl.touk.poker.android.network;
 
 
 public class EstimateRequest {
-    private long userId;
-    private int estimate;
+    private String userId;
+    private String estimate;
 
-    public long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
-    public int getEstimate() {
+    public String getEstimate() {
         return estimate;
     }
 
-    public void setEstimate(int estimate) {
+    public void setEstimate(String estimate) {
         this.estimate = estimate;
     }
 }
