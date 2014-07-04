@@ -5,6 +5,7 @@ import dagger.Provides;
 import pl.touk.poker.android.config.PokerApplication;
 import pl.touk.poker.android.config.application.ApplicationRunConfiguration;
 import pl.touk.poker.android.ui.ComponentsActivity;
+import pl.touk.poker.android.ui.PlanningActivity;
 import pl.touk.poker.android.utils.Ln;
 import pl.touk.poker.android.utils.TaskRunner;
 import pl.touk.poker.android.utils.TaskRunnerImpl;
@@ -19,7 +20,8 @@ import pl.touk.poker.android.utils.TaskRunnerImpl;
             TaskRunner.class,
             ApplicationRunConfiguration.class,
             RootModule.class,
-            ComponentsActivity.class
+            ComponentsActivity.class,
+            PlanningActivity.class
     },
     staticInjections = {
             Ln.class,

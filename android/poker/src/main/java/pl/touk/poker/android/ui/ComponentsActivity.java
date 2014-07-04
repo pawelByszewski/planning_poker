@@ -2,22 +2,17 @@ package pl.touk.poker.android.ui;
 
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import pl.touk.poker.android.R;
 import pl.touk.poker.android.network.Request;
 import pl.touk.poker.android.network.Response;
-import pl.touk.poker.android.network.ServerApi;
 import pl.touk.poker.android.network.ServerClient;
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -61,7 +56,8 @@ public class ComponentsActivity extends Activity {
     private class SessionJoined implements Callback<Response> {
         @Override
         public void success(Response response, retrofit.client.Response response2) {
-            Toast.makeText(ComponentsActivity.this, "Success", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(ComponentsActivity.this, PlanningActivity.class);
+            startActivity(intent);
         }
 
         @Override
