@@ -47,10 +47,6 @@ public class ComponentsActivity extends Activity {
     public void onJoinSession(View view) {
         Request request = new Request();
         request.setName(usernameInput.getText().toString());
-        ServerClient.getApi().joinSession(request, sessionInput.getText().toString(), new SessionJoined());
-        request.setName("Adam");
-        //ServerClient.getApi().joinSession(request, sessionInput.getText().toString(), new SessionJoined());
-//        showAlert();
         client.getApi().joinSession(request, sessionInput.getText().toString(), new SessionJoined());
     }
 
