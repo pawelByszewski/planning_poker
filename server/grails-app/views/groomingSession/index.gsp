@@ -72,7 +72,5 @@
     </div>
 
     <div id="qrcode"></div>
-
-</script>
 </body>
 </html>
