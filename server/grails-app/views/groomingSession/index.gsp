@@ -71,6 +71,11 @@
         </a>
     </div>
 
+    <g:uploadForm controller="GroomingSession" action="readTaskFile">
+        <input type="file" name="taskFile" />
+        <input type="submit" />
+    </g:uploadForm>
+
     <div id="qrcode"></div>
 </body>
 </html>
