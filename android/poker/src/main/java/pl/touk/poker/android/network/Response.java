@@ -1,22 +1,22 @@
 package pl.touk.poker.android.network;
 
 public class Response {
-    private int userId;
-    private int sessionId;
+    private String userId;
+    private String sessionId;
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
-    public int getSessionId() {
+    public String getSessionId() {
         return sessionId;
     }
 
-    public void setSessionId(int sessionId) {
+    public void setSessionId(String sessionId) {
         this.sessionId = sessionId;
     }
 }
