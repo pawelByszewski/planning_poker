@@ -13,7 +13,7 @@ class XmlTaskReaderService {
     private Task readXmlTaskItem(def task) {
         def id = task.key.@'id'.text() as Long
         def title = task.title.text()
-        def htmlDescription = task.description.text()
+        String htmlDescription = task.description.text() as String
         def project = task.project.text()
         return new Task(id: id, title: title, project: project, htmlDescription: htmlDescription)
     }

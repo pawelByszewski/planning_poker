@@ -4,6 +4,7 @@
     <r:require module="spring-websocket" />
     <title>Grails Twitter Bootstrap Scaffolding</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <g:javascript src="qrcode.js" />
     <asset:javascript src="jquery" />
     <asset:javascript src="spring-websocket" />
     <!-- Latest compiled and minified CSS -->
@@ -59,6 +60,23 @@
 
         </div>
     </div>
+
+    <h1>Wczytane taski</h1>
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Nazwa zadania</th>
+        </tr>
+
+        <g:each in="${tasks}">
+            <tr>
+                <td>${it.id}</td>
+                <td>${it.title}</td>
+            </tr>
+        </g:each>
+    </table>
+
+
     <div class="row-fluid" >
         <h1>Wycena</h1>
         <div class="span4" id="estimate">
@@ -70,11 +88,6 @@
             </button>
         </a>
     </div>
-
-    <g:uploadForm controller="GroomingSession" action="readTaskFile">
-        <input type="file" name="taskFile" />
-        <input type="submit" />
-    </g:uploadForm>
 
     <div id="qrcode"></div>
 </body>

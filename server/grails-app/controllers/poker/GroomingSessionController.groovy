@@ -10,10 +10,12 @@ class GroomingSessionController {
     def xmlTaskReaderService
 
     def index() {
+        CommonsMultipartFile xmlTaskFile = request.getFile('taskFile') as CommonsMultipartFile
+        List<Task> tasks = xmlTaskReaderService.readTasks(xmlTaskFile.inputStream)
         String planningSessionKey = RandomStringUtils.random(9, true, true)
         GroomingSession groommingSession = new GroomingSession(sessionId: planningSessionKey)
         groommingSession.save(true)
-        [planningSessionKey: planningSessionKey]
+        [planningSessionKey: planningSessionKey, tasks: tasks]
     }
 
     def addUser() {

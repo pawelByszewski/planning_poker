@@ -15,9 +15,10 @@
 <body>
 <div class="row-fluid">
     <a href="GroomingSession">
-        <button class="btn btn-success btn-lg" type="button">
-            Rozpocznij sesję
-        </button>
+        <g:uploadForm controller="GroomingSession" action="index">
+            <input type="file" name="taskFile" />
+            <input type="submit" value="Rozpocznij sesję" />
+        </g:uploadForm>
     </a>
 </div>
 </body>
