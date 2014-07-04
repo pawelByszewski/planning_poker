@@ -25,16 +25,10 @@ public class ComponentsActivity extends Activity {
     @InjectView(R.id.usernameInput)
     EditText usernameInput;
 
-//    ActionBarDrawerToggle actionBarDrawerToggle;
     @Inject ServerClient client;
 
     @InjectView(R.id.sessionIdInput)
     EditText sessionInput;
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        return false;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,20 +44,12 @@ public class ComponentsActivity extends Activity {
         client.getApi().joinSession(request, sessionInput.getText().toString(), new SessionJoined());
     }
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return false;
-    }
-
     private class SessionJoined implements Callback<Response> {
         @Override
         public void success(Response response, retrofit.client.Response response2) {
             Intent intent = new Intent(ComponentsActivity.this, PlanningActivity.class);
+            intent.putExtra("userId", response.getUserId());
+            intent.putExtra("sessionId", response.getSessionId());
             startActivity(intent);
         }
 
