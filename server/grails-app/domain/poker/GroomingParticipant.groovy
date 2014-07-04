@@ -4,7 +4,7 @@ class GroomingParticipant {
 
     String name
 
-    static belongsTo = [groomingSession: GroommingSession]
+    static belongsTo = [groomingSession: GroomingSession]
     static constraints = {
         name(nullable: false, blank: false)
     }

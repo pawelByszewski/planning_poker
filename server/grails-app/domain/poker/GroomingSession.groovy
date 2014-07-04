@@ -1,6 +1,6 @@
 package poker
 
-class GroommingSession {
+class GroomingSession {
 
     String sessionId
 

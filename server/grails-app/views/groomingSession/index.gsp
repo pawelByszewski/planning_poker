@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="bootstrap"/>
+    <r:require module="spring-websocket" />
     <title>Grails Twitter Bootstrap Scaffolding</title>
 </head>
 

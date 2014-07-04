@@ -6,8 +6,8 @@ import spock.lang.Specification
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(GroommingSession)
-class GroommingSessionSpec extends Specification {
+@TestFor(GroomingSession)
+class GroomingSessionSpec extends Specification {
 
     def setup() {
     }
