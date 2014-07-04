@@ -24,6 +24,10 @@
                 client.subscribe("/topic/adduser", function(message) {
                     $('#users').append('<p>' + message.body + '</p>')
                 });
+
+                client.subscribe("/topic/finalEstimate", function(message) {
+                    $('#estimate').append('<p>' + message.body + '</p>')
+                });
             });
         });
     </script>
@@ -38,6 +42,12 @@
     <div class="row-fluid" >
         <h1>Podłączeniu użytkownicy</h1>
         <div class="span4" id="users">
+
+        </div>
+    </div>
+    <div class="row-fluid" >
+        <h1>Wycena</h1>
+        <div class="span4" id="estimate">
 
         </div>
     </div>
