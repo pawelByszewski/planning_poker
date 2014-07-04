@@ -10,7 +10,7 @@ class GroomingSessionController {
     def xmlTaskReaderService
 
     def index() {
-        String planningSessionKey = RandomStringUtils.random(9, true, true)
+        String planningSessionKey = RandomStringUtils.random(2, true, true)
         GroomingSession groommingSession = new GroomingSession(sessionId: planningSessionKey)
         groommingSession.save(true)
         [planningSessionKey: planningSessionKey]

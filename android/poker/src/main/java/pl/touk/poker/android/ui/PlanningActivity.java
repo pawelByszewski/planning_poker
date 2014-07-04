@@ -13,7 +13,6 @@ import butterknife.OnClick;
 import pl.touk.poker.android.R;
 import pl.touk.poker.android.config.dagger.Injector;
 import pl.touk.poker.android.network.EmptyResponse;
-import pl.touk.poker.android.network.EstimateRequest;
 import pl.touk.poker.android.network.ServerClient;
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -73,6 +72,8 @@ public class PlanningActivity extends Activity {
 
         @Override
         public void failure(RetrofitError retrofitError) {
+            retrofitError.printStackTrace();
+
             toast("Failure");
         }
 

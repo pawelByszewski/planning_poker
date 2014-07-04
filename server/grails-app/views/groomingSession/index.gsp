@@ -5,6 +5,7 @@
     <title>Grails Twitter Bootstrap Scaffolding</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <asset:javascript src="jquery" />
+    <g:javascript src="qrcode.js" />
     <asset:javascript src="spring-websocket" />
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -76,6 +77,7 @@
         <input type="submit" />
     </g:uploadForm>
 
-    <div id="qrcode"></div>
+    <div id="qrcode" style="margin-left: 50px;"></div>
+
 </body>
 </html>

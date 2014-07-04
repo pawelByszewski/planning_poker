@@ -7,8 +7,13 @@ import retrofit.client.OkClient;
 import retrofit.client.Request;
 import retrofit.client.Response;
 
-
-import java.io.ByteArrayOutputStream;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.security.KeyManagementException;
@@ -17,12 +22,9 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.concurrent.TimeUnit;
 
-import javax.inject.Inject;
-import javax.net.ssl.*;
-
 public class ServerClient {
 
-    private static final String API_URL = "http://poker1.apiary-mock.com";
+    private static final String API_URL = "http://192.168.60.189:8080/poker";
     public static final int TIMEOUT = 120000;
     public static String APP_VERSION = "undefined";
 
