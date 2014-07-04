@@ -1,11 +1,10 @@
 package pl.touk.poker.android.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.ButterKnife;
@@ -22,47 +21,41 @@ import retrofit.client.Response;
 
 import javax.inject.Inject;
 
-public class PlanningActivity extends Activity {
-    @Inject
-    ServerClient client;
-
-    @InjectView(R.id.sessionId)
-    TextView sessionIdView;
-
-    @InjectView(R.id.estimateSpinner)
-    Spinner estimateSpinner;
-
+public class EstimationFragment extends Fragment {
+    String estimate;
     String userId;
     String sessionId;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initCredentials();
+    @InjectView(R.id.estimateValue)
+    TextView estimateWidget;
+
+    @Inject
+    ServerClient client;
+
+    public EstimationFragment(String estimate, String userId, String sessionId) {
+        this.estimate = estimate;
+        this.userId = userId;
+        this.sessionId = sessionId;
         Injector.inject(this);
-        setContentView(R.layout.planning);
-        ButterKnife.inject(this);
+        ButterKnife.inject(getActivity());
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        sessionIdView.setText(sessionId);
-        String[] estimates = {"1", "2", "3", "5", "8"};
-        estimateSpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, estimates));
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.estimate, container, false);
     }
 
     @OnClick(R.id.sendButton)
     public void onSend(View view) {
         EstimateRequest req = new EstimateRequest();
         req.setUserId(userId);
-        req.setEstimate(estimateSpinner.getSelectedItem().toString());
+        req.setEstimate(estimate);
         client.getApi().estimate(req, sessionId, new ToastResponse());
     }
 
-    private void initCredentials() {
-        this.userId = getIntent().getStringExtra("userId");
-        this.sessionId = getIntent().getStringExtra("sessionId");
+    @Override
+    public void onResume() {
+        estimateWidget.setText(estimate);
     }
 
     private class ToastResponse implements Callback<EmptyResponse> {
@@ -77,7 +70,7 @@ public class PlanningActivity extends Activity {
         }
 
         protected void toast(String message) {
-            Toast.makeText(PlanningActivity.this, message, Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
         }
     }
 }

@@ -47,7 +47,7 @@ public class ComponentsActivity extends Activity {
     private class SessionJoined implements Callback<Response> {
         @Override
         public void success(Response response, retrofit.client.Response response2) {
-            Intent intent = new Intent(ComponentsActivity.this, PlanningActivity.class);
+            Intent intent = new Intent(ComponentsActivity.this, PlanningActivitySwipeEdition.class);
             intent.putExtra("userId", response.getUserId());
             intent.putExtra("sessionId", response.getSessionId());
             startActivity(intent);

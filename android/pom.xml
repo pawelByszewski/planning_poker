@@ -94,7 +94,7 @@
             <version>${support.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.android.support</groupId>
+            <groupId>com.google.support</groupId>
             <artifactId>support-v4</artifactId>
             <version>${support.version}</version>
         </dependency>
