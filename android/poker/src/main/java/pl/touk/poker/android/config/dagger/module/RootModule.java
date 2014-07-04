@@ -1,9 +1,11 @@
 package pl.touk.poker.android.config.dagger.module;
 
+import com.sun.corba.se.spi.activation.Server;
 import dagger.Module;
 import dagger.Provides;
 import pl.touk.poker.android.config.PokerApplication;
 import pl.touk.poker.android.config.application.ApplicationRunConfiguration;
+import pl.touk.poker.android.network.ServerClient;
 import pl.touk.poker.android.ui.ComponentsActivity;
 import pl.touk.poker.android.utils.Ln;
 import pl.touk.poker.android.utils.TaskRunner;
@@ -19,7 +21,8 @@ import pl.touk.poker.android.utils.TaskRunnerImpl;
             TaskRunner.class,
             ApplicationRunConfiguration.class,
             RootModule.class,
-            ComponentsActivity.class
+            ComponentsActivity.class,
+            ServerClient.class
     },
     staticInjections = {
             Ln.class,
@@ -29,9 +32,17 @@ import pl.touk.poker.android.utils.TaskRunnerImpl;
 )
 public class RootModule {
 
+    private ServerClient serverClient;
+
     @Provides
     TaskRunner provideTaskRunner() {
         return new TaskRunnerImpl();
+    }
+
+    @Provides
+    ServerClient provideServerClient() {
+        if(serverClient == null) serverClient = new ServerClient();
+        return serverClient;
     }
 
 }

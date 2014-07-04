@@ -26,19 +26,17 @@ public class ServerClient {
     public static final int TIMEOUT = 120000;
     public static String APP_VERSION = "undefined";
 
-    private static boolean IS_MOCK = true;
-
     private ServerApi grailsApi;
 
-    private static class Loader {
-        static ServerClient instance = new ServerClient();
-    }
+   // private static class Loader {
+    //    static ServerClient instance = new ServerClient();
+    //}
 
-    private static ServerClient getInstance() {
-        return Loader.instance;
-    }
+    //private static ServerClient getInstance() {
+    //    return Loader.instance;
+   // }
 
-    private ServerClient() {
+    public ServerClient() {
 
         OkHttpClient okHttpClient = new OkHttpClient();
         try {
@@ -129,8 +127,8 @@ public class ServerClient {
         return sc.getSocketFactory();
     }
 
-    public static ServerApi getApi() {
-        return getInstance().grailsApi;
+    public ServerApi getApi() {
+       return grailsApi;
     }
 
 }

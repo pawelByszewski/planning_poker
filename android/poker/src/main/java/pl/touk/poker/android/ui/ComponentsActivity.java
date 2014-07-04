@@ -15,6 +15,7 @@ import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import pl.touk.poker.android.R;
+import pl.touk.poker.android.config.dagger.Injector;
 import pl.touk.poker.android.network.Request;
 import pl.touk.poker.android.network.Response;
 import pl.touk.poker.android.network.ServerApi;
@@ -22,12 +23,15 @@ import pl.touk.poker.android.network.ServerClient;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 
+import javax.inject.Inject;
+
 public class ComponentsActivity extends Activity {
 
 //    @InjectView(R.id.drawer_layout)
 //    public DrawerLayout drawerLayout;
 
 //    ActionBarDrawerToggle actionBarDrawerToggle;
+    @Inject ServerClient client;
 
     @InjectView(R.id.sessionIdInput)
     EditText sessionInput;
@@ -43,13 +47,15 @@ public class ComponentsActivity extends Activity {
         setContentView(R.layout.components_view);
 //        Injector.inject(this);
         ButterKnife.inject(this);
+        Injector.inject(this);
     }
 
     public void onJoinSession(View view) {
         Request request = new Request();
         request.setName("Adam");
-        ServerClient.getApi().joinSession(request, sessionInput.getText().toString(), new SessionJoined());
+        //ServerClient.getApi().joinSession(request, sessionInput.getText().toString(), new SessionJoined());
 //        showAlert();
+        client.getApi().joinSession(request, sessionInput.getText().toString(), new SessionJoined());
     }
 
     public void showAlert() {
