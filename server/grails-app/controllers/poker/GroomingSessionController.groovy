@@ -1,8 +1,6 @@
 package poker
 import grails.converters.JSON
 import org.apache.commons.lang.RandomStringUtils
-import org.springframework.messaging.handler.annotation.MessageMapping
-import org.springframework.messaging.handler.annotation.SendTo
 
 class GroomingSessionController {
 
@@ -36,12 +34,6 @@ class GroomingSessionController {
             float average = ((participants*.estimate.sum() as Integer)/participants.size()) as Float
             brokerMessagingTemplate.convertAndSend("/topic/finalEstimate", average)
         }
-    }
-
-    @MessageMapping("/adduser")
-    @SendTo("/topic/adduser")
-    def example() {
-        return "hello from controller!"
     }
 
 }

@@ -4,6 +4,7 @@
     <r:require module="spring-websocket" />
     <title>Grails Twitter Bootstrap Scaffolding</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <g:javascript src="qrcode.js"/>
     <asset:javascript src="jquery" />
     <asset:javascript src="spring-websocket" />
     <!-- Latest compiled and minified CSS -->
@@ -29,6 +30,12 @@
                     $('#estimate').append('<p>' + message.body + '</p>')
                 });
             });
+            var qrcode = new QRCode("qrcode");
+            function makeCode () {
+                qrcode.makeCode("${planningSessionKey}");
+            }
+            makeCode();
+
         });
     </script>
 </head>
@@ -51,5 +58,7 @@
 
         </div>
     </div>
+
+    <div id="qrcode"></div>
 </body>
 </html>
