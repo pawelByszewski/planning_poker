@@ -27,8 +27,8 @@ import javax.inject.Inject;
 
 public class ComponentsActivity extends Activity {
 
-//    @InjectView(R.id.drawer_layout)
-//    public DrawerLayout drawerLayout;
+    @InjectView(R.id.usernameInput)
+    EditText usernameInput;
 
 //    ActionBarDrawerToggle actionBarDrawerToggle;
     @Inject ServerClient client;
@@ -45,35 +45,18 @@ public class ComponentsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.components_view);
-//        Injector.inject(this);
         ButterKnife.inject(this);
         Injector.inject(this);
     }
 
     public void onJoinSession(View view) {
         Request request = new Request();
+        request.setName(usernameInput.getText().toString());
+        ServerClient.getApi().joinSession(request, sessionInput.getText().toString(), new SessionJoined());
         request.setName("Adam");
         //ServerClient.getApi().joinSession(request, sessionInput.getText().toString(), new SessionJoined());
 //        showAlert();
         client.getApi().joinSession(request, sessionInput.getText().toString(), new SessionJoined());
-    }
-
-    public void showAlert() {
-        new AlertDialog.Builder(this)
-                .setTitle("Ugabuga!")
-                .setMessage(sessionInput.getText().toString())
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // continue with delete
-                    }
-                })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // do nothing
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
     }
 
     @Override
@@ -87,7 +70,6 @@ public class ComponentsActivity extends Activity {
     }
 
     private class SessionJoined implements Callback<Response> {
-
         @Override
         public void success(Response response, retrofit.client.Response response2) {
             Toast.makeText(ComponentsActivity.this, "Success", Toast.LENGTH_LONG).show();
