@@ -60,7 +60,40 @@ The full example:
        
    </pl.allegro.fogger.ui.drawer.DrawerLayoutWithBlurredBackground>
    ```
-Working example you could find in the  [example app](https://jira.office/secure/RapidBoard.jspa?rapidView=1470&view=detail)
+Working example you could find in the  [example app](https://stash.office/projects/MAS/repos/android-blur/browse/example)
+
+Dialog
+-------------------
+
+To create dialog window with blurred background you can not invoke dialog window. A the first you must prepare ```Activity``` that extends 
+```java
+public abstract class DialogWithBlurBackgroundContainer extends Activity
+``` 
+and implement abstract method ```java protected Dialog createDialog()``` that MUST return the dialog window you want to show to user. 
+Specialy dialog launcher must be used. 
+```java
+public class DialogWithBlurredBackgroundLauncher {
+
+ ...
+ 
+ public synchronized void launchForResult(Activity activity, Intent intent, int requestCode) {
+ ...
+ }
+```
+Lets assume you prepared already pointing specialy "Dialog Activity" named ```ExampleDialog```, then you could show dialog form any Activiti
+```java
+ Intent intent = new Intent(context, ExampleDialog.class);
+ DialogWithBlurredBackgroundLauncher dialogWithBlurredBackgroundLauncher = new DialogWithBlurredBackgroundLauncher();
+ //'this' pointing to any Activity instance
+ int requestCode = 1;
+ dialogWithBlurredBackgroundLauncher.launchForResult(this, intent, requestCode);
+```
+The dialog result could be handled in method already definde Activity method
+```java
+protected void onActivityResult (int requestCode, int resultCode, Intent data)
+```
+The source dialog for received result is determined by requestCode that must be passed to ```dialogWithBlurredBackgroundLauncher.launchForResult(...)```
+
 
 Road Map
 --------------------
