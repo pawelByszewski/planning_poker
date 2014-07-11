@@ -10,7 +10,7 @@ class GroomingSessionController {
     def xmlTaskReaderService
 
     def index() {
-        String planningSessionKey = RandomStringUtils.random(2, true, true)
+        String planningSessionKey = RandomStringUtils.random(12, true, true)
         GroomingSession groommingSession = new GroomingSession(sessionId: planningSessionKey)
         groommingSession.save(true)
         [planningSessionKey: planningSessionKey]
@@ -22,13 +22,15 @@ class GroomingSessionController {
         groommingSession.addToParticipants(groomingParticipant)
         groommingSession.save(true)
         brokerMessagingTemplate.convertAndSend "/topic/adduser", params.name
-        render([id: groomingParticipant.id] as JSON)
+        render([userId: groomingParticipant.id] as JSON)
     }
 
     def addEstimate() {
         GroomingParticipant groomingParticipant = GroomingParticipant.findById(params.userId)
         groomingParticipant.estimate = Integer.parseInt(params.estimate)
         groomingParticipant.save(flush: true)
+
+//        brokerMessagingTemplate.convertAndSend("/topic/finalEstimate", average)
 
         GroomingSession groommingSession = GroomingSession.findBySessionId(params.sessionId)
         List<GroomingParticipant> unreadyParticipants = GroomingParticipant.findAllByGroomingSessionAndEstimateLessThan(groommingSession, 0)
@@ -37,13 +39,14 @@ class GroomingSessionController {
             float average = ((participants*.estimate.sum() as Integer)/participants.size()) as Float
             brokerMessagingTemplate.convertAndSend("/topic/finalEstimate", average)
         }
+        [:]
     }
 
     def newTask() {
         GroomingSession groommingSession = GroomingSession.findBySessionId(params.sessionId)
         groommingSession.participants.each{
             it.estimate = -1
-            it.save()
+            it.save(flush: true)
         }
         render [:]
     }

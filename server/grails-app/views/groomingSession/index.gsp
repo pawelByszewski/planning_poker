@@ -41,7 +41,7 @@
         $(document).ready(function(){
             $('#newTask').click(function(e) {
                 e.preventDefault();
-                $.get( "poker/grooming/${planningSessionKey}/newTask");
+                $.get( "grooming/${planningSessionKey}/newTask");
                 $('#estimate').empty();
             });
         })
