@@ -60,7 +60,7 @@ The full example:
        
    </pl.allegro.fogger.ui.drawer.DrawerLayoutWithBlurredBackground>
    ```
-Working example you could find in the  [example app](https://stash.office/projects/MAS/repos/android-blur/browse/example)
+Working example of drawer with dynamicly blurred bacground you could find in the [example app](https://stash.office/projects/MAS/repos/android-blur/browse/example)
 
 Dialog
 -------------------
@@ -94,7 +94,11 @@ protected void onActivityResult (int requestCode, int resultCode, Intent data)
 ```
 The source dialog for received result is determined by requestCode that must be passed to ```dialogWithBlurredBackgroundLauncher.launchForResult(...)```
 
+Working example of dialog window with blurred background you could find in the [example app](https://stash.office/projects/MAS/repos/android-blur/browse/example)
+
+Context Menu
+-------------------
 
 Road Map
---------------------
+===================
 Blurring background under context menu should be available soon.
