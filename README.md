@@ -4,9 +4,9 @@ Fogger
 ====================
 
 Lib to create blurred background under:
-⋅⋅* dialogs
-..* drawer
-..* context menu
+* dialogs
+* drawer
+* context menu
 
 Issues
 --------------------
