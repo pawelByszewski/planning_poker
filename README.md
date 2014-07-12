@@ -3,7 +3,10 @@
 Fogger
 ====================
 
-Lib to create blurred background for dialogs, drawer etc.
+Lib to create blurred background under:
+⋅⋅* dialogs
+..* drawer
+..* context menu
 
 Issues
 --------------------
@@ -65,7 +68,7 @@ Working example of drawer with dynamicly blurred bacground you could find in the
 Dialog
 -------------------
 
-To create dialog window with blurred background you can not invoke dialog window. A the first you must prepare ```Activity``` that extends 
+To create dialog window with blurred background you can not just invoke dialog window. A the first you must prepare ```Activity``` that extends 
 ```java
 public abstract class DialogWithBlurBackgroundContainer extends Activity
 ``` 
@@ -98,7 +101,29 @@ Working example of dialog window with blurred background you could find in the [
 
 Context Menu
 -------------------
+To create context window with blurred background you must prepare ```Activity``` that extends 
+```java
+public abstract class ActivityWithContextMenu extends Activity {
+``` 
+
+then you must implements one required abstract method
+```java
+    protected abstract int getContextMenuResId(View view);
+```
+
+The method must provide resource id form context menu to show eg.
+```java
+    @Override
+    protected int getContextMenuResId(View view) {
+        return R.menu.context_menu;
+    }
+```
+The rest of context menu flow is unchanged, so you have to register context menu on some View and listen click event with Androids method
+```java
+public boolean onContextItemSelected(MenuItem item) {
+```
+
 
 Road Map
 ===================
-Blurring background under context menu should be available soon.
+At the moment I have no plan for further features, if you have any idea please let me know.
