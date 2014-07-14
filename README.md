@@ -3,7 +3,10 @@
 Fogger
 ====================
 
-Lib to create blurred background for dialogs, drawer etc.
+Lib to create blurred background under:
+* dialogs
+* drawer
+* context menu
 
 Issues
 --------------------
@@ -60,8 +63,67 @@ The full example:
        
    </pl.allegro.fogger.ui.drawer.DrawerLayoutWithBlurredBackground>
    ```
-Working example you could find in the  [example app](https://jira.office/secure/RapidBoard.jspa?rapidView=1470&view=detail)
+Working example of drawer with dynamicly blurred bacground you could find in the [example app](https://stash.office/projects/MAS/repos/android-blur/browse/example)
+
+Dialog
+-------------------
+
+To create dialog window with blurred background you can not just invoke dialog window. A the first you must prepare ```Activity``` that extends 
+```java
+public abstract class DialogWithBlurBackgroundContainer extends Activity
+``` 
+and implement abstract method ```java protected Dialog createDialog()``` that MUST return the dialog window you want to show to user. 
+Specialy dialog launcher must be used. 
+```java
+public class DialogWithBlurredBackgroundLauncher {
+
+ ...
+ 
+ public synchronized void launchForResult(Activity activity, Intent intent, int requestCode) {
+ ...
+ }
+```
+Lets assume you prepared already pointing specialy "Dialog Activity" named ```ExampleDialog```, then you could show dialog form any Activiti
+```java
+ Intent intent = new Intent(context, ExampleDialog.class);
+ DialogWithBlurredBackgroundLauncher dialogWithBlurredBackgroundLauncher = new DialogWithBlurredBackgroundLauncher();
+ //'this' pointing to any Activity instance
+ int requestCode = 1;
+ dialogWithBlurredBackgroundLauncher.launchForResult(this, intent, requestCode);
+```
+The dialog result could be handled in method already definde Activity method
+```java
+protected void onActivityResult (int requestCode, int resultCode, Intent data)
+```
+The source dialog for received result is determined by requestCode that must be passed to ```dialogWithBlurredBackgroundLauncher.launchForResult(...)```
+
+Working example of dialog window with blurred background you could find in the [example app](https://stash.office/projects/MAS/repos/android-blur/browse/example)
+
+Context Menu
+-------------------
+To create context window with blurred background you must prepare ```Activity``` that extends 
+```java
+public abstract class ActivityWithContextMenu extends Activity {
+``` 
+
+then you must implements one required abstract method
+```java
+    protected abstract int getContextMenuResId(View view);
+```
+
+The method must provide resource id form context menu to show eg.
+```java
+    @Override
+    protected int getContextMenuResId(View view) {
+        return R.menu.context_menu;
+    }
+```
+The rest of context menu flow is unchanged, so you have to register context menu on some View and listen click event with Androids method
+```java
+public boolean onContextItemSelected(MenuItem item) {
+```
+
 
 Road Map
---------------------
-Blurring background under context menu should be available soon.
+===================
+At the moment I have no plan for further features, if you have any idea please let me know.
